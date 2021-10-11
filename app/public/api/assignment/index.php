@@ -7,15 +7,9 @@ require 'class/DbConnection.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT * FROM games';
+$sql = 'SELECT * FROM assignment';
 $vars = [];
 
-if(isset($_GET['game'])){
-    //This method keeps people from being able to SQL inject into your database
-    //This LIMITS the input into the "studentId" field, making sure you can't edit the SQL Database
-    $sql = 'SELECT * FROM offers WHERE game_id = ?';
-    $vars = [ $_GET['game'] ];
-}
 // if (isset($_GET['guid'])) {
 //   // This is an example of a parameterized query
 //   $sql = 'SELECT * FROM Patient WHERE patientGuid = ?';

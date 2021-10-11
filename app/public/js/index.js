@@ -1,10 +1,11 @@
 const Offer = {
     data() {
         return {
-            "students": [],
-            selectedStudent: null,
+            "referee": [],
+            selectedRef: null,
             offerForm:{},
-            "offers": []
+            "games": [],
+            "assignments":[]
         }
     },
 
@@ -22,24 +23,24 @@ const Offer = {
             return "$ " + d;
         },
 
-        selectStudent(s) {
-            if (s == this.selectedStudent) {
+        selectRef(s) {
+            if (s == this.selectedRef) {
                 return;
             }
 
-            this.selectedStudent = s;
-            this.offers = [];
-            this.fetchOfferData(this.selectedStudent);
+            this.selectedRef = s;
+            this.assignments = [];
+            this.fetchOfferData(this.selectedRef);
         },
 
-        fetchStudentData(){
-            fetch('/api/students/')
+        fetchRefereeData(){
+            fetch('/api/referees/')
         
             .then( response => response.json())
     
             .then( (responseJson) => {
                 console.log(responseJson);
-                this.students = responseJson;
+                this.referee = responseJson;
             }
             )
     
@@ -49,13 +50,30 @@ const Offer = {
             })
         },
 
-        fetchOfferData(s){
-            console.log("Fetching offer data for ", s);
-            fetch('/api/offers/offersIndex.php?student=' + s.id)
+        fetchGameData(){
+            fetch('/api/games/')
+        
+            .then( response => response.json())
+    
+            .then( (responseJson) => {
+                console.log(responseJson);
+                this.games = responseJson;
+            }
+            )
+    
+            .catch( (err) => {
+    
+                    console.error(err);
+            })
+        },
+
+        fetchAssignmentData(s){
+            console.log("Fetching assignment data for ", s);
+            fetch('/api/assignment/?referee_id=' + s.referee_id)
             .then( response => response.json())
             .then( (responseJson) => {
                 console.log(responseJson);
-                this.offers = responseJson;
+                this.assignments = responseJson;
             })
     
             .catch( (err) => {
@@ -90,8 +108,10 @@ const Offer = {
     },
 
     created() {
-        this.fetchStudentData();
+        this.fetchRefereeData();
+        this.fetchGameData();
     }
 }
+
 
 Vue.createApp(Offer).mount('#offerApp')

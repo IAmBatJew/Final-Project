@@ -1,5 +1,9 @@
 body {}
 
+table {
+    background-color: aqua;
+}
+
 .student {
     margin: 10px 2px;
     padding: 4px;
