@@ -40,10 +40,10 @@
     <div id="offerApp" class="container">
         <div class="row align-items-start">
           <div class="col col-4">
-           <div v-for="ref in referees" v-on:click="selectRef(s)"
-             :class="['referee', {selected: selectedRef && s.id == selectedRef.id}]">
-             <span class="firstName">{{ s.fname }}</span><br>
-             <span class="lastName">{{ s.lastname }}</span>
+           <div v-for="ref in referee" v-on:click="selectRef(ref)"
+             :class="['refer', {selected: selectedRef && ref.referee_id == selectedRef.referee_id}]">
+             <span class="fname">{{ ref.fname + ' '}}</span>
+             <span class="lname">{{ ref.lname }}</span><br><br>
              </div>
           </div>
 
@@ -62,7 +62,7 @@
                     <tr v-for="assignment in assignments">
                         <td>{{ assignment.game_id }}</td>
                         <td>{{ assignment.referee_id }}</td>
-                        <td>{{ assignment.current_status) }}</td>
+                        <td>{{ assignment.current_status }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -71,7 +71,9 @@
               <h3>No assignments. 😥</h3>
             </div>
 
-            <form v-on:submit.prevent="postNewOffer">
+            <!-- For when we start posting
+
+              <form v-on:submit.prevent="postNewOffer">
               <div class="form-group mb-3">
                 <label for="companyName">Company Name</label>
                 <input type="text" id="companyName" class="form-control" aria-describedby="companyName" placeholder="Enter Company Name" v-model="offerForm.companyName">
@@ -87,10 +89,10 @@
               <div class="form-group form-check mb-3">
                 <label for="offerDate">Offer Date</label>
                 <input type="date" class="form-control" id="offerDate" aria-describedby="offerDate" placeholder="Enter Date" v-model="offerForm.offerDate">
-                <!--<small id="dateInput" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                <small id="dateInput" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </form>-->
 
           </div>
         </div>

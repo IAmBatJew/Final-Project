@@ -23,14 +23,14 @@ const Offer = {
             return "$ " + d;
         },
 
-        selectRef(s) {
-            if (s == this.selectedRef) {
+        selectRef(ref) {
+            if (ref == this.selectedRef) {
                 return;
             }
 
-            this.selectedRef = s;
+            this.selectedRef = ref;
             this.assignments = [];
-            this.fetchOfferData(this.selectedRef);
+            this.fetchAssignmentData(this.selectedRef);
         },
 
         fetchRefereeData(){
@@ -67,9 +67,9 @@ const Offer = {
             })
         },
 
-        fetchAssignmentData(s){
-            console.log("Fetching assignment data for ", s);
-            fetch('/api/assignment/?referee_id=' + s.referee_id)
+        fetchAssignmentData(ref){
+            console.log("Fetching assignment data for ", ref);
+            fetch('/api/assignment/?refer=' + ref.referee_id)
             .then( response => response.json())
             .then( (responseJson) => {
                 console.log(responseJson);

@@ -31,14 +31,17 @@ CREATE TABLE assignment(
 
 INSERT INTO referee(referee_id, fname, lname, age, grade, referee_skill) VALUES
 (1, 'Dow', 'Jones', 34, 2, 70),
-(2, 'Wayne', 'Newton', 21, 3, 85);
+(2, 'Wayne', 'Newton', 21, 3, 85),
+(3, 'Satchmo', 'Armstrong', 57, 6, 99);
 
 INSERT INTO games(game_id, field_num, start_date, start_time, game_level) VALUES
 (1, 24, '2021/10/20','10:00:00', 1),
 (2, 12, '2021/09/20','13:00:00', 3),
-(3, 54, '2021/10/19','09:00:00', 1);
+(3, 54, '2021/10/19','09:00:00', 1),
+(4, 54, '2021/10/22','09:00:00', 1);
 
 INSERT INTO assignment(assignment_id, game_id, referee_id, current_status) VALUES
 (1, 1, 1, 'Waiting'),
-(2, 2, 2, 'Complete'),
-(3, 3, 2, 'Waiting');
+(2, 2, 3, 'Complete'),
+(3, 3, 2, 'Waiting'),
+(4, 4, 2, 'Waiting');
