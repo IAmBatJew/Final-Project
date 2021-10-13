@@ -27,7 +27,6 @@ const Offer = {
             if (ref == this.selectedRef) {
                 return;
             }
-
             this.selectedRef = ref;
             this.assignments = [];
             this.fetchAssignmentData(this.selectedRef);

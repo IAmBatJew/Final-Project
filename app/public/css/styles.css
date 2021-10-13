@@ -1,7 +1,62 @@
-body {}
+/*Bootstrap Overrides*/
 
-table {
-    background-color: aqua;
+body {
+    color: rgb(48, 48, 48);
+}
+
+a {
+    color: rgb(49, 137, 193);
+    text-decoration: none;
+}
+
+a:hover {
+    color: grey;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: rgb(48, 48, 48);
+}
+
+.nav-pills .nav-link.active {
+    background-color: white;
+    color: rgb(49, 137, 193);
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.nav-link {
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.nav-link:hover {
+    color: grey;
+    background-color: white;
+}
+
+nav{
+    background-color: rgb(49, 137, 193);
+}
+
+
+/*Custom Classes and IDs*/
+
+.divider {
+    width: 80px;
+    height: 7px;
+    background-color: rgb(49, 137, 193);
+    margin-bottom: 10px;
+}
+
+.small{
+    font-style: italic;
 }
 
 .student {
@@ -12,7 +67,8 @@ table {
 }
 
 .selected {
-    background-color: burlywood;
+    background-color: rgb(49, 137, 193);
+    color: white;
 }
 
 .userName{
@@ -22,3 +78,4 @@ table {
 .studentName{
     color: lightcoral;
 }
+

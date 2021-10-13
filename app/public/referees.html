@@ -11,40 +11,42 @@
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link href="css/styles.css" rel="stylesheet" type="text/css">
 
-  <title>Games</title>
+  <title>Referees</title>
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 
 <body>
 
   <nav class="nav nav-pills nav-fill navbar-dark shadow p-3 mb-5">
-    <a class="nav-link active" aria-current="page" href="#">Games</a>
+    <a class="nav-link" href="games.html">Games</a>
     <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link" href="referees.html">Referees</a>
+    <a class="nav-link active" aria-current="page" href="#">Referees</a>
   </nav>
 
   
   <div id="offerApp" class="container">
+
     <div class="row">
+
       <div class="col">
-        <h1>List of Games</h1>
+        <h1>List of Referees</h1>
         <div class="divider"></div>
 
         <table class="table table-striped table-hover">
           <thead>
             <tr>
-              <th>Field Number</th>
-              <th>Start Date</th>
-              <th>Start Time</th>
-              <th>Game Level</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Grade</th>
+              <th>Skill</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="game in games">
-              <td>{{ game.field_num }}</td>
-              <td>{{ game.start_date }}</td>
-              <td>{{ game.start_time}}</td>
-              <td>{{ game.game_level }}</td>
+            <tr v-for="ref in referee">
+              <td>{{ ref.fname }}</td>
+              <td>{{ ref.lname }}</td>
+              <td>{{ ref.grade}}</td>
+              <td>{{ ref.referee_skill }}</td>
             </tr>
           </tbody>
         </table>
