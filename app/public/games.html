@@ -1,57 +1,64 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link href="css/styles.css" rel="stylesheet" type="text/css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Games</title>
-    <script src="https://unpkg.com/vue@next"></script>
-  </head>
-  <body>
-    
-    <nav class="nav nav-pills nav-fill navbar-dark shadow p-3 mb-5">
-        <a class="nav-link active" aria-current="page"  href="#">Games</a>
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="referees.html">Referees</a>
-    </nav>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
 
-    <h1>List of Games</h1>
-    <div id="offerApp" class="container">
+  <title>Games</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
 
-          <div class="col col-8">
-            <h2>Games</h2>
-            
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Field Number</th>
-                  <th>Start Date</th>
-                  <th>Start Time</th>
-                  <th>Game Level</th>
-                </tr>
-              </thead>
-                <tbody>
-                    <tr v-for="game in games">
-                        <td>{{ game.field_num }}</td>
-                        <td>{{ game.start_date }}</td>
-                        <td>{{ game.start_time}}</td>
-                        <td>{{ game.game_level }}</td>
-                    </tr>
-                </tbody>
-            </table>
-          </div>
-        </div>
+<body>
+
+  <nav class="nav nav-pills nav-fill navbar-dark shadow p-3 mb-5">
+    <a class="nav-link active" aria-current="page" href="#">Games</a>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="referees.html">Referees</a>
+  </nav>
+
+  
+  <div id="offerApp" class="container">
+    <div class="row">
+      <div class="col">
+        <h1>List of Games</h1>
+        <div class="divider"></div>
+
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Field Number</th>
+              <th>Start Date</th>
+              <th>Start Time</th>
+              <th>Game Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="game in games">
+              <td>{{ game.field_num }}</td>
+              <td>{{ game.start_date }}</td>
+              <td>{{ game.start_time}}</td>
+              <td>{{ game.game_level }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 
-    <!--  Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-    <script src="js/tablesort.min.js"></script>
-    <script src="js/index.js"></script>
+  <!--  Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script src="js/tablesort.min.js"></script>
+  <script src="js/index.js"></script>
 </body>
+
 </html>
