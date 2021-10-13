@@ -36,9 +36,10 @@
       </div>
 
       <div class="col col-8" v-if="selectedRef">
-        <h1>Assignments for {{ selectedRef.fname + ' ' + selectedRef.lname }}</h1>
+        <h3>Assignments for {{ selectedRef.fname + ' ' + selectedRef.lname }}</h3>
+        <hr/>
 
-        <table class="table">
+        <table class="table table-striped table-hover">
           <thead>
             <tr>
               <th>Game ID</th>
