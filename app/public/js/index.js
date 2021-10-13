@@ -69,7 +69,7 @@ const Offer = {
 
         fetchAssignmentData(ref){
             console.log("Fetching assignment data for ", ref);
-            fetch('/api/assignment/?refer=' + ref.referee_id)
+            fetch('/api/assignment/?referee=' + ref.referee_id)
             .then( response => response.json())
             .then( (responseJson) => {
                 console.log(responseJson);
