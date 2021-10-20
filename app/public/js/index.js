@@ -3,7 +3,9 @@ const Offer = {
         return {
             "referee": [],
             selectedRef: null,
-            offerForm:{},
+            selectedGame: null,
+            gameForm:{},
+            refForm:{},
             "games": [],
             "assignments":[]
         }
@@ -23,6 +25,14 @@ const Offer = {
             return "$ " + d;
         },
 
+        postRef(evt) {
+            if(this.selectedRef === null) {
+                this.postNewRef(evt);
+            } else {
+                this.postEditRef(evt);
+            }
+        },
+
         selectRef(ref) {
             if (ref == this.selectedRef) {
                 return;
@@ -30,6 +40,14 @@ const Offer = {
             this.selectedRef = ref;
             this.assignments = [];
             this.fetchAssignmentData(this.selectedRef);
+        },
+
+        postGame(evt) {
+            if(this.selectedGame === null) {
+                this.postNewGame(evt);
+            } else {
+                this.postEditGame(evt);
+            }
         },
 
         fetchRefereeData(){
@@ -68,7 +86,7 @@ const Offer = {
 
         fetchAssignmentData(ref){
             console.log("Fetching assignment data for ", ref);
-            fetch('/api/assignment/?referee=' + ref.referee_id)
+            fetch('/api/assignment/?referee_id=' + ref.referee_id)
             .then( response => response.json())
             .then( (responseJson) => {
                 console.log(responseJson);
@@ -81,15 +99,15 @@ const Offer = {
             })
         },
 
-        postNewOffer(evt) {
+        postNewGame(evt) {
 
-            this.offerForm.studentId = this.selectedStudent.id;
-            console.log("Posting:", this.offerForm);
+            ///this.gameForm.game_id = this.selectedGame.game_id;
+            console.log("Creating:", this.gameForm);
             // alert("Posting!");
     
-            fetch('api/offers/create.php', {
+            fetch('api/games/create.php', {
                 method:'POST',
-                body: JSON.stringify(this.offerForm),
+                body: JSON.stringify(this.gameForm),
                 headers: {
                     "content-Type": "application/json; charset=utf-8"
                 }
@@ -98,10 +116,34 @@ const Offer = {
             .then ( json => {
                 console.log("Returned from post:", json);
                 //TODO: test a result was returned!
-                this.offers = json;
+                this.games = json;
     
                 //Reset the form
-                this.offerForm = {};
+                this.gameForm = {};
+            });
+        },
+
+        postNewRef(evt) {
+
+            ///this.gameForm.game_id = this.selectedGame.game_id;
+            console.log("Creating:", this.refForm);
+            // alert("Posting!");
+    
+            fetch('api/referees/create.php', {
+                method:'POST',
+                body: JSON.stringify(this.refForm),
+                headers: {
+                    "content-Type": "application/json; charset=utf-8"
+                }
+            })
+            .then( response => response.json() )
+            .then ( json => {
+                console.log("Returned from post:", json);
+                //TODO: test a result was returned!
+                this.referee = json;
+    
+                //Reset the form
+                this.refForm = {};
             });
         },
     },

@@ -7,8 +7,8 @@ require 'class/DbConnection.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT * FROM assignment';
-$vars = [];
+$sql = 'SELECT * FROM assignment WHERE referee_id =?';
+$vars = [ $_GET['referee_id']];
 
 if (isset($_GET['refer'])) {
   // This is an example of a parameterized query

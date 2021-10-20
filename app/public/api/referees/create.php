@@ -34,16 +34,16 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO games (field_num, start_date, start_time, game_level, num_of_refs)
+  'INSERT INTO referee (fname, lname, age, grade, referee_skill)
   VALUES (?, ?, ?, ?, ?)'
 );
 
 $stmt->execute([
-  $_POST['field_num'],
-  $_POST['start_date'],
-  $_POST['start_time'],
-  $_POST['game_level'],
-  $_POST['num_of_refs']
+  $_POST['fname'],
+  $_POST['lname'],
+  $_POST['age'],
+  $_POST['grade'],
+  $_POST['referee_skill']
 ]);
 
 // Get auto-generated PK from DB
@@ -54,4 +54,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../games/');
+header('Location: ../referees/');

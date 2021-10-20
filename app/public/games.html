@@ -37,6 +37,7 @@
               <th>Start Date</th>
               <th>Start Time</th>
               <th>Game Level</th>
+              <th>Number of Referees</th>
             </tr>
           </thead>
           <tbody>
@@ -45,11 +46,42 @@
               <td>{{ game.start_date }}</td>
               <td>{{ game.start_time}}</td>
               <td>{{ game.game_level }}</td>
+              <td>{{ game.num_of_refs}}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+
+    <h3>{{selectedGame === null ? "Add" : "Edit" }}</h3>
+            <form v-on:submit.prevent="postGame">
+              <div class="form-group mb-3">
+                <label for="fieldNum">Field Number</label>
+                <input type="number" id="fieldNum" class="form-control" aria-describedby="fieldNum" placeholder="Enter Field Number" v-model="gameForm.field_num">
+              </div>
+              <div class="mb-3">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" class="form-control" aria-describedby="startDate" placeholder="Enter Start Date" v-model="gameForm.start_date">
+              </div>
+              <div class="mb-3">
+                <label for="startTime">Start time</label>
+                <input type="time" id="startTime" class="form-control" aria-describedby="startTime" placeholder="Enter Start Time" v-model="gameForm.start_time">
+              </div>
+              <div class="form-group form-check mb-3">
+                <label for="gameLvl">Game Level</label>
+                <input type="number" class="form-control" id="gameLvl" aria-describedby="gameLvl" placeholder="Enter Game Level" v-model="gameForm.game_level">
+                <!--<small id="dateInput" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+              </div>
+              <div class="mb-3">
+                <label for="numOfRefs">Number of Referees</label>
+                <input type="number" id="numOfRefs" class="form-control" aria-describedby="numOfRefs" placeholder="Enter # of Referees" v-model="gameForm.num_of_refs">
+              </div>
+              <button type="submit" class="btn btn-primary">{{selectedGame === null ? "Add" : "Edit" }}</button>
+              <button type="button" class="btn btn-outline-secondary" 
+              v-if="selectedGame"
+              v-on:click="resetOfferForm">Cancel</button>
+            </form>
+
   </div>
 
   <!--  Bootstrap Bundle with Popper -->

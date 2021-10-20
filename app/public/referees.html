@@ -37,6 +37,7 @@
             <tr>
               <th>First Name</th>
               <th>Last Name</th>
+              <th>Age</th>
               <th>Grade</th>
               <th>Skill</th>
             </tr>
@@ -45,13 +46,45 @@
             <tr v-for="ref in referee">
               <td>{{ ref.fname }}</td>
               <td>{{ ref.lname }}</td>
-              <td>{{ ref.grade}}</td>
+              <td>{{ ref.age }}</td>
+              <td>{{ ref.grade }}</td>
               <td>{{ ref.referee_skill }}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+
+    <h3>{{selectedRef === null ? "Add" : "Edit" }}</h3>
+    <form v-on:submit.prevent="postRef">
+      <div class="form-group mb-3">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" class="form-control" aria-describedby="fname" placeholder="Enter First Name" v-model="refForm.fname">
+      </div>
+      <div class="mb-3">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" class="form-control" aria-describedby="lname" placeholder="Enter Last Name" v-model="refForm.lname">
+      </div>
+      <div class="mb-3">
+        <label for="age">Age</label>
+        <input type="number" id="age" class="form-control" aria-describedby="age" placeholder="Enter Age" v-model="refForm.age">
+      </div>
+      <div class="form-group form-check mb-3">
+        <label for="grade">Grade</label>
+        <input type="number" class="form-control" id="grade" aria-describedby="grade" placeholder="Enter Referee Grade" v-model="refForm.grade">
+        <!--<small id="dateInput" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+      </div>
+      <div class="mb-3">
+        <label for="refSkill">Refree Skill Level</label>
+        <input type="number" id="refSkill" class="form-control" aria-describedby="refSkill" placeholder="Enter Referee Skill Level" v-model="refForm.referee_skill">
+      </div>
+      <button type="submit" class="btn btn-primary">{{selectedGame === null ? "Add" : "Edit" }}</button>
+      <button type="button" class="btn btn-outline-secondary" 
+      v-if="selectedGame"
+      v-on:click="resetOfferForm">Cancel</button>
+    </form>
+
+
   </div>
 
   <!--  Bootstrap Bundle with Popper -->
