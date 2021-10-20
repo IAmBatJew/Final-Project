@@ -44,6 +44,7 @@
             <tr>
               <th>Game ID</th>
               <th>Referee ID</th>
+              <th>Position</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -51,7 +52,13 @@
             <tr v-for="assignment in assignments">
               <td>{{ assignment.game_id }}</td>
               <td>{{ assignment.referee_id }}</td>
+              <td>{{ assignment.position }}</td>
               <td>{{ assignment.current_status }}</td>
+              <td>
+                <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="selectAssignment(assignment)">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" 
+                v-on:click="postDeleteAssignment(assignment)" >Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -60,28 +67,35 @@
           <h3>No assignments. 😥</h3>
         </div>
 
-        <!-- For when we start posting
-
-              <form v-on:submit.prevent="postNewOffer">
-              <div class="form-group mb-3">
-                <label for="companyName">Company Name</label>
-                <input type="text" id="companyName" class="form-control" aria-describedby="companyName" placeholder="Enter Company Name" v-model="offerForm.companyName">
-              </div>
-              <div class="mb-3">
-                <label for="salary">Salary</label>
-                <input type="number" id="salary" class="form-control" aria-describedby="salaryAmount" placeholder="Enter Salary" v-model="offerForm.salary">
-              </div>
-              <div class="mb-3">
-                <label for="bonus">Bonus</label>
-                <input type="number" id="bonus" class="form-control" aria-describedby="bonusAmount" placeholder="Enter Bonus" v-model="offerForm.bonus">
-              </div>
-              <div class="form-group form-check mb-3">
-                <label for="offerDate">Offer Date</label>
-                <input type="date" class="form-control" id="offerDate" aria-describedby="offerDate" placeholder="Enter Date" v-model="offerForm.offerDate">
-                <small id="dateInput" class="form-text text-muted">We'll never share your email with anyone else.</small>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>-->
+        <h3>{{selectedRef === null ? "Add" : "Edit" }}</h3>
+        <form v-on:submit.prevent="postAssignment">
+          <div class="form-group mb-3">
+            <label for="gameId">Game ID</label>
+            <input type="number" id="gameId" class="form-control" aria-describedby="gameId" placeholder="Enter Game ID" v-model="assignForm.game_id">
+          </div>
+          <div class="mb-3">
+            <label for="refId">Referee ID</label>
+            <input type="number" id="refId" class="form-control" aria-describedby="refId" placeholder="Enter Referee ID" v-model="assignForm.referee_id">
+          </div>
+          <div class="mb-3">
+            <label for="position">Position</label>
+            <input type="varchar" id="position" class="form-control" aria-describedby="position" placeholder="Enter Referee Position" v-model="assignForm.position">
+          </div>
+          <div class="form-group form-check mb-3">
+            <label for="current_status">Assignment Status</label>
+            <select class="form-select" id="current_status" aria-describedby="current_status" placeholder="Select Assignment Status" v-model="assignForm.current_status">
+                <option value="unassigned" selected>Unassigned</option>
+                <option value="notified">Notified</option>
+                <option value="declined">Declined</option>
+                <option value="accepted">Accepted</option>
+            </select>
+            <!--<small id="dateInput" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+          </div>
+          <button type="submit" class="btn btn-primary">{{selectedGame === null ? "Add" : "Edit" }}</button>
+          <button type="button" class="btn btn-outline-secondary" 
+          v-if="selectedAssignment"
+          v-on:click="resetAssignForm">Cancel</button>
+            </form>
 
       </div>
     </div>

@@ -10,11 +10,10 @@ $db = DbConnection::getConnection();
 $sql = 'SELECT * FROM assignment';
 $vars = [];
 
-if (isset($_GET['referee_id'])) {
-  // This is an example of a parameterized query
-  $sql = 'SELECT * FROM assignment WHERE referee_id = ?';
-  $vars = [ $_GET['referee_id'] ];
-}
+if(isset($_GET['game_id'])) {
+    $sql = 'SELECT * FROM games WHERE 
+    num_of_refs > (SELECT COUNT(*) FROM assignments WHERE game_id = ?' ;
+$vars = []; }
 
 $stmt = $db->prepare($sql);
 $stmt->execute($vars);

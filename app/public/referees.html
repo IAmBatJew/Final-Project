@@ -49,6 +49,11 @@
               <td>{{ ref.age }}</td>
               <td>{{ ref.grade }}</td>
               <td>{{ ref.referee_skill }}</td>
+              <td>
+                <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="selectRef(ref)">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" 
+                v-on:click="postDeleteRef(ref)" >Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>
