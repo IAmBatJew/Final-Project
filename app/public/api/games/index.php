@@ -13,7 +13,7 @@ $vars = [];
 if(isset($_GET['game_id'])){
     //This method keeps people from being able to SQL inject into your database
     //This LIMITS the input into the "studentId" field, making sure you can't edit the SQL Database
-    $sql = 'SELECT * FROM offers WHERE game_id = ?';
+    $sql = 'SELECT * FROM games WHERE game_id = ?';
     $vars = [ $_GET['game_id'] ];
 }
 // if (isset($_GET['guid'])) {
