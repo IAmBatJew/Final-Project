@@ -171,7 +171,7 @@ const Offer = {
                 return; 
             }
 
-            fetch('api/games/delete.php', {
+            fetch('api/assignment/delete.php', {
                 method:'POST',
                 body: JSON.stringify(o),
                 headers: {
@@ -196,7 +196,7 @@ const Offer = {
                 return; 
             }
 
-            fetch('api/games/delete.php', {
+            fetch('api/referees/delete.php', {
                 method:'POST',
                 body: JSON.stringify(o),
                 headers: {
@@ -284,7 +284,7 @@ const Offer = {
             });
         },
 
-        selectRef(o) {
+        selectsRef(o) {
             this.selectedRef = o;
             this.refForm = Object.assign({}, this.selectedRef);
         },

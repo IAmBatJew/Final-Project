@@ -67,7 +67,7 @@
           <h3>No assignments. 😥</h3>
         </div>
 
-        <h3>{{selectedRef === null ? "Add" : "Edit" }}</h3>
+        <h3>{{selectedAssignment === null ? "Add" : "Edit" }}</h3>
         <form v-on:submit.prevent="postAssignment">
           <div class="form-group mb-3">
             <label for="gameId">Game ID</label>
@@ -91,7 +91,7 @@
             </select>
             <!--<small id="dateInput" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
           </div>
-          <button type="submit" class="btn btn-primary">{{selectedGame === null ? "Add" : "Edit" }}</button>
+          <button type="submit" class="btn btn-primary">{{selectedAssignment === null ? "Add" : "Edit" }}</button>
           <button type="button" class="btn btn-outline-secondary" 
           v-if="selectedAssignment"
           v-on:click="resetAssignForm">Cancel</button>

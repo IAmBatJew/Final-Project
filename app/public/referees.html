@@ -50,7 +50,7 @@
               <td>{{ ref.grade }}</td>
               <td>{{ ref.referee_skill }}</td>
               <td>
-                <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="selectRef(ref)">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="selectsRef(ref)">Edit</button>
                 <button type="button" class="btn btn-outline-secondary btn-sm" 
                 v-on:click="postDeleteRef(ref)">Delete</button>
               </td>
@@ -83,7 +83,7 @@
         <label for="refSkill">Refree Skill Level</label>
         <input type="number" id="refSkill" class="form-control" aria-describedby="refSkill" placeholder="Enter Referee Skill Level" v-model="refForm.referee_skill">
       </div>
-      <button type="submit" class="btn btn-primary">{{selectedGame === null ? "Add" : "Edit" }}</button>
+      <button type="submit" class="btn btn-primary">{{selectedRef === null ? "Add" : "Edit" }}</button>
       <button type="button" class="btn btn-outline-secondary" 
       v-if="selectedGame"
       v-on:click="resetOfferForm">Cancel</button>
