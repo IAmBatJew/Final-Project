@@ -87,11 +87,11 @@
               v-if="selectedGame"
               v-on:click="resetOfferForm">Cancel</button>
             </form>
+            
+
             <button type="button" class="btn btn-outline-secondary"
             v-on:click="fetchUnassigned">View Unassigned Games</button>
-
-        <div v-if="fetchUnassigned = true">
-        <h1 v-if="fetUnassigned = true">List of Unassigned Games</h1>
+        <h1>List of Unassigned Games</h1>
         <div class="divider"></div>
         <table class="table table-striped table-hover">
           <thead>

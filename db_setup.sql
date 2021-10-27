@@ -53,3 +53,5 @@ INSERT INTO assignment(assignment_id, game_id, referee_id, position, current_sta
 (8, 3, 3, 'AR2', 'Accepted'),
 (9, 4, 3, 'R', 'Notified'),
 (10, 4, 2, 'AR1', 'Notified');
+
+SELECT * FROM games WHERE num_of_refs > (SELECT COUNT(*) FROM assignment WHERE games.game_id = assignment.game_id);

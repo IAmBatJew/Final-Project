@@ -105,7 +105,7 @@ const Offer = {
 
         fetchUnassignedGames() {
             console.log("Fetching Unassigned Games");
-            fetch('api/games/unassigned.php')
+            fetch('api/reports/')
 
             .then( response => response.json())
 
@@ -138,6 +138,82 @@ const Offer = {
                 this.resetGameForm();
             });
         },
+
+        postDeleteGame(o) {
+
+            ///Use "prompt" instead of confirm to have them type in a response, not just a clickable button
+            if (!confirm("Are you sure you want to delete the game from "+o.field_num+"?")){
+                return; 
+            }
+
+            fetch('api/games/delete.php', {
+                method:'POST',
+                body: JSON.stringify(o),
+                headers: {
+                    "content-Type": "application/json; charset=utf-8"
+                }
+            })
+            .then( response => response.json() )
+            .then ( json => {
+                console.log("Returned from post:", json);
+                //TODO: test a result was returned!
+                this.games = json;
+    
+                //Reset the form
+                this.resetGameForm();
+            });
+        },
+
+        postDeleteAssignment(o) {
+
+            ///Use "prompt" instead of confirm to have them type in a response, not just a clickable button
+            if (!confirm("Are you sure you want to delete the game from "+o.assignment_id+"?")){
+                return; 
+            }
+
+            fetch('api/games/delete.php', {
+                method:'POST',
+                body: JSON.stringify(o),
+                headers: {
+                    "content-Type": "application/json; charset=utf-8"
+                }
+            })
+            .then( response => response.json() )
+            .then ( json => {
+                console.log("Returned from post:", json);
+                //TODO: test a result was returned!
+                this.assignment = json;
+    
+                //Reset the form
+                this.resetAssignForm();
+            });
+        },
+
+        postDeleteRef(o) {
+
+            ///Use "prompt" instead of confirm to have them type in a response, not just a clickable button
+            if (!confirm("Are you sure you want to delete the game from "+o.fname+"?")){
+                return; 
+            }
+
+            fetch('api/games/delete.php', {
+                method:'POST',
+                body: JSON.stringify(o),
+                headers: {
+                    "content-Type": "application/json; charset=utf-8"
+                }
+            })
+            .then( response => response.json() )
+            .then ( json => {
+                console.log("Returned from post:", json);
+                //TODO: test a result was returned!
+                this.referee = json;
+    
+                //Reset the form
+                this.resetRefForm();
+            });
+        },
+
 
         selectGame(o) {
             this.selectedGame = o;
