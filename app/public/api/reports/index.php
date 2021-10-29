@@ -7,7 +7,7 @@ require 'class/DbConnection.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT * FROM games WHERE num_of_refs > (SELECT COUNT(*) FROM assignment WHERE games.game_id = assignment.game_id)';
+$sql = 'SELECT * FROM games WHERE num_of_refs > (SELECT COUNT(*) FROM assignment WHERE games.game_id = assignment.game_id) ';
 $vars = [];
 
 $stmt = $db->prepare($sql);
