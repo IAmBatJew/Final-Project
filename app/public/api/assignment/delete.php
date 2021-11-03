@@ -49,4 +49,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../assignment/?assign=' . $_POST['assignment_id']);
+header('Location: ../assignment/?referee_id=' . $_POST['referee_id']);

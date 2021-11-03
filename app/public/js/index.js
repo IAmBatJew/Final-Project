@@ -182,7 +182,7 @@ const Offer = {
             .then ( json => {
                 console.log("Returned from post:", json);
                 //TODO: test a result was returned!
-                this.assignment = json;
+                this.assignments = json;
     
                 //Reset the form
                 this.resetAssignForm();
